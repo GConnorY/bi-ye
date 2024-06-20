@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>许菲凡的毕业祝福</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+        h1 {
+            color: #333;
+        }
+        p {
+            font-size: 18px;
+            color: #555;
+        }
+        .signature {
+            margin-top: 40px;
+            text-align: right;
+            font-style: italic;
+            color: #777;
+        }
+        .daisy {
+            position: absolute;
+            bottom: -150px;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, white 20%, transparent 20%), radial-gradient(circle, white 20%, transparent 20%);
+            background-size: 50% 50%;
+            background-position: center;
+            border-radius: 50%;
+            animation: bloom 5s infinite;
+            opacity: 0;
+        }
+        .daisy:nth-child(1) {
+            background-color: purple;
+            left: 20%;
+            animation-delay: 0s;
+        }
+        .daisy:nth-child(2) {
+            background-color: blue;
+            left: 40%;
+            animation-delay: 1s;
+        }
+        .daisy:nth-child(3) {
+            background-color: white;
+            left: 60%;
+            animation-delay: 2s;
+        }
+        .daisy:nth-child(4) {
+            background-color: purple;
+            left: 80%;
+            animation-delay: 3s;
+        }
+        @keyframes bloom {
+            0% {
+                transform: scale(0.5);
+                opacity: 0;
+                bottom: -150px;
+            }
+            50% {
+                transform: scale(1.2);
+                opacity: 1;
+                bottom: 50px;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 0;
+                bottom: -150px;
+            }
+        }
+        .gallery {
+            margin: 20px 0;
+        }
+        .gallery img {
+            width: 100%;
+            max-width: 600px;
+            display: none;
+        }
+        .gallery img.active {
+            display: block;
+        }
+        audio {
+            display: none; /* 隐藏音频控件 */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>美丽的许菲凡同学，毕业快乐！</h1>
+        <p>许菲凡女士：</p>
+        <p>毕业快乐！！！虽然这个大学亏欠你太多。</p>
+        <p>但希望此间零碎的阳光洒在你劳累的大学生活中能让你回想起来时感到些许欣慰与快乐。</p>
+        <p>祝你在今后的生活中，一帆风顺，前程似锦，早日暴富！！！！</p>
+        <p>当然更祝你在充斥着浮躁与不真诚的世界里，永远拥抱最简单的快乐，永远纯粹~~！！</p>
+        <p>你不是谁的附属品，你的喜欢也不是！！！祝单纯美丽的你能同时遇见烤肠与豆花~！！</p>
+        <div class="signature">
+            <p>祝好~</p>
+            <p>INFP</p>
+        </div>
+        <div class="gallery">
+            <img src="C:\Users\V\Desktop\html\1.jpg" alt="Image 1" class="active">
+            <img src="C:\Users\V\Desktop\html\2.jpg" alt="Image 2">
+            <img src="C:\Users\V\Desktop\html\3.jpg" alt="Image 3">
+            <img src="C:\Users\V\Desktop\html\4.jpg" alt="Image 4">
+        </div>
+    </div>
+    <div class="daisy"></div>
+    <div class="daisy"></div>
+    <div class="daisy"></div>
+    <div class="daisy"></div>
+    <audio id="bg-music" autoplay loop>
+        <source src="C:\Users\V\Desktop\html\1.mp3" type="audio/mpeg">
+        您的浏览器不支持音频元素。
+    </audio>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const images = document.querySelectorAll('.gallery img');
+            let current = 0;
+
+            function showNextImage() {
+                images[current].classList.remove('active');
+                current = (current + 1) % images.length;
+                images[current].classList.add('active');
+            }
+
+            setInterval(showNextImage, 3000); // 每3秒切换一次图片
+
+            // 自动播放音频
+            const audio = document.getElementById('bg-music');
+            const playAudio = () => {
+                if (audio.paused) {
+                    audio.play().catch(error => {
+                        console.log('自动播放被阻止：', error);
+                    });
+                }
+            };
+
+            document.body.addEventListener('click', playAudio);
+
+            // 页面可拖动
+            document.body.style.overflow = 'auto';
+        });
+    </script>
+</body>
+</html>
